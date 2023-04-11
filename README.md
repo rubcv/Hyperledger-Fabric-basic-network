@@ -69,35 +69,6 @@ The Hyperledger Fabric network consists of:
     ./teardown.sh
     ```
     ![Network deployment](./img/teardown.png)
-
-### Manually test the chaincode
-
-The ERC-20 token chaincode can be tested making use of the CLI Docker container.
-In order to do so, get a shell inside the container:
-```shell
-docker exec -it cli bash
-```
-Once inside, some transactions can be submitted using the `peer chaincode` command. Note that this chaincode **needs to be initialized**, therefore the `Initialize` function must be executed first.
-
-1. Initialize
-    ```shell
-    peer chaincode invoke -o orderer.example.com:7050 --tls --cafile $ORDERER_TLS_CA -C default -n erc20token --peerAddresses $CORE_PEER_ADDRESS --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE -c '{"function":"Initialize","args":["mytoken",  "mysymbol", "2"]}' --waitForEvent
-    ```
-    ![Init chaincode](./img/init.png)
-
-1. Mint some tokens
-    ```shell
-    peer chaincode invoke -o orderer.example.com:7050 --tls --cafile $ORDERER_TLS_CA -C default -n erc20token --peerAddresses $CORE_PEER_ADDRESS --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE -c '{"function":"Mint","args":["5000"]}' --waitForEvent
-    ```
-    ![Mint tokens](./img/mint.png)
-
-1. Query the account balance
-    ```shell
-    peer chaincode query -C default -n erc20token -c '{"function":"ClientAccountBalance","Args":[]}'
-
-    ```
-    ![Query balance](./img/querybalance.png)
-
 ## Web Application
 
 A Web Application is made available using **Nest.js**
@@ -120,13 +91,6 @@ npm start
 ![Web Application](./img/webapp-start.png)
 
 ### Using the Web Application
-
-#### Fabric CA user creation
-
-Whenever the web application is started, the user for the application is registered and enrolled on the Fabric CA making use of the Fabric SDK.
-The configuration is specified in `webapp/src/blockchain/fabric.ts`. That being the user ID, the channel and chainode names to connect to and the path in which the wallet of the user will be generated.
-
-![Web Application](./img/user.png)
 
 #### Transactions
 
