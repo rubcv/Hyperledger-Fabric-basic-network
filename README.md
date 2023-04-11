@@ -15,15 +15,12 @@ Basic network for a Hyperledger Fabric project development.
 
 ## Pre-requisites
 
-1. Hyperledger Fabric v2.4
+1. Hyperledger Fabric v2.2
 1. Hyperledger Fabric CA v1.5
 1. Docker v20.10
 1. Docker-Compose v2.14.0
-1. Golang v1.19.4
 1. NodeJS / TypeScript v16.13.0
 1. npm v9.2.0
-
-> Note: This has been developed using macOS, other OS have not been tested.
 
 ## Hyperledger Fabric network
 
