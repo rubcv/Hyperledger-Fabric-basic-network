@@ -1,5 +1,5 @@
 # Hyperledger-Fabric-basic-network
-Basic network for a Hyperledger Fabric project development
+Basic network for a Hyperledger Fabric project development.
 
 ## Table of contents
 
